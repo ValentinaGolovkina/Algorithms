@@ -22,13 +22,31 @@ public class MyArrayList<E extends Comparable<E>> {
 
     public void add(E item) {
         //  проверить переполнение и при необходимости увеличиваем массив на size/2 +1
+        checkSize();
         list[size] = item;
         size++;
+    }
+    private void checkSize() {
+        if (list.length <= size) {
+            E[] newList = (E[]) new Comparable[list.length+size/2+1];
+            for (int i=0;i<size; i++) {
+                newList[i] = list[i];
+            }
+            list = newList;
+        }
+    }
+
+    private void checkIndex(int index) {
+        if (!(index>0 && index<size)) {
+            throw new IllegalArgumentException("index: "+index);
+        }
     }
 
     public void add(int index, E item) {
         // проверить корректность index  [0..size]
+        checkIndex(index);
         //  проверить переполнение и при необходимости увеличиваем массив на size/2 +1
+        checkSize();
         for (int i = size; i > index; i--) {
             list[i] = list[i - 1];
         }
@@ -41,6 +59,7 @@ public class MyArrayList<E extends Comparable<E>> {
             throw new NoSuchElementException();
         }
         // проверить корректность index  [0..size)
+        checkIndex(index);
         for (int i = index; i <= size; i++) {
             list[i] = list[i + 1];
         }
@@ -59,6 +78,7 @@ public class MyArrayList<E extends Comparable<E>> {
 
     public E get(int index) {
         // проверить корректность index  [0..size)
+        checkIndex(index);
         return list[index];
     }
 
@@ -140,6 +160,14 @@ public class MyArrayList<E extends Comparable<E>> {
                 }
             }
         }
+    }
+
+    public MyArrayList<E> copy() {
+        MyArrayList<E> newArr = new MyArrayList<>(list.length);
+        for(int i=0;i<size;i++) {
+            newArr.add(list[i]);
+        }
+        return newArr;
     }
 
 }
