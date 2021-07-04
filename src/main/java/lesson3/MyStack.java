@@ -1,6 +1,7 @@
 package lesson3;
 
 import java.util.EmptyStackException;
+import java.util.Stack;
 
 public class MyStack<T> {
     private T[] list;
