@@ -10,18 +10,35 @@ public class MyLinkedList<E> implements Iterable<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new Iter();
     }
 
     private class Iter implements Iterator<E>{
+
+        Node current;
+
         @Override
         public boolean hasNext() {
-            return false;
+            if (isEmpty()) {
+                return false;
+            }
+            if (current==null) {
+                return true;
+            }
+            return current.next!=null;
         }
 
         @Override
         public E next() {
-            return null;
+            if(!hasNext()) {
+                throw new RuntimeException("Нет следующего элемента");
+            }
+            if(current==null) {
+                current=first;
+                return current.value;
+            }
+            current=current.next;
+            return current.value;
         }
     }
 
