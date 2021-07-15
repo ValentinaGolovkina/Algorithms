@@ -41,8 +41,8 @@ public class Main {
                 sum++;
             }
         }
-        Double d = sum/1000000D;
+        Double d = sum/1000000D*100;
         System.out.println("Количество сбалансированных " + sum);
-        System.out.println("Процент сбалансированных: " + d);
+        System.out.println("Процент сбалансированных: " + d + " %");
     }
 }
