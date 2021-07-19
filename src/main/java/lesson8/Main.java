@@ -16,11 +16,11 @@ public class Main {
 //        System.out.println(x);
 //        System.out.println(Math.abs(x));
 
-//        ChainingHashMap<Integer, String> chm = new ChainingHashMap<>(16);
+        ChainingHashMap<Integer, String> chm = new ChainingHashMap<>(16);
 
-//        chm.put(1, "one");
-//        chm.put(222, "222e");
-//        chm.put(4545, "4545e");
+        chm.put(1, "one");
+        chm.put(222, "222e");
+        chm.put(4545, "4545e");
 
 //        System.out.println(chm.get(1));
 
@@ -30,15 +30,18 @@ public class Main {
 //            chm.put(random.nextInt(1000), "");
 //        }
 
-//        System.out.println(chm);
+        System.out.println(chm);
+        chm.delete(1);
+        System.out.println(chm);
 
+/*
         LinearProbingHashMap<Integer, String> lphm = new LinearProbingHashMap<>();
 
         lphm.put(1, "one");
         lphm.put(222, "222e");
         lphm.put(4545, "4545e");
 
-        System.out.println(lphm.get(222));
+        System.out.println(lphm.get(222));*/
 
     }
 }
